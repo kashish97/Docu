@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "989716824897",
+    "firebase_url": "https://hello-727db.firebaseio.com",
+    "project_id": "hello-727db",
+    "storage_bucket": "hello-727db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989716824897:android:e333dce1821fca43cdd7c0",
+        "android_client_info": {
+          "package_name": "com.appsnipp.modernlogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "989716824897-r1ddqpmk16a9uubrmiuum0ldatu5beb5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCImXWWBXxVcR9qHbF74liqFj8y6d2uitY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "989716824897-r1ddqpmk16a9uubrmiuum0ldatu5beb5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
