@@ -19,19 +19,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.jaredrummler.materialspinner.MaterialSpinner;
 
 import java.util.Date;
 
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
-    EditText name, email, password;
+    EditText name, email, password, cnfpassword;
     Button mRegisterbtn;
-    TextView mLoginPageBack;
+   // TextView mLoginPageBack;
     FirebaseAuth mAuth;
     DatabaseReference mdatabase;
     String Name, Email, Password;
@@ -42,17 +44,26 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        MaterialSpinner spinner = (MaterialSpinner) findViewById(R.id.spinner);
+        spinner.setItems("Dermatologist", "Gynae", "Skin", "Surgery");
+        spinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
 
+            @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+                //Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_LONG).show();
+            }
+        });
         changeStatusBarColor();
-        name = (EditText) findViewById(R.id.editTextName);
-        email = (EditText) findViewById(R.id.editTextEmail);
-        password = (EditText) findViewById(R.id.editTextPassword);
-        mRegisterbtn = (Button) findViewById(R.id.cirRegisterButton);
-        mLoginPageBack = (TextView) findViewById(R.id.cirLoginButton);
+        name = (EditText) findViewById(R.id.ed1);
+        email = (EditText) findViewById(R.id.editText);
+        password = (EditText) findViewById(R.id.editText4);
+        cnfpassword = (EditText) findViewById(R.id.editText5);
+
+        mRegisterbtn = (Button) findViewById(R.id.button3);
+     //   mLoginPageBack = (TextView) findViewById(R.id.cirLoginButton);
         // for authentication using FirebaseAuth.
         mAuth = FirebaseAuth.getInstance();
         mRegisterbtn.setOnClickListener((View.OnClickListener) this);
-        mLoginPageBack.setOnClickListener((View.OnClickListener) this);
+   //     mLoginPageBack.setOnClickListener((View.OnClickListener) this);
         mDialog = new ProgressDialog(this);
         mdatabase = FirebaseDatabase.getInstance().getReference().child("Users");
 
@@ -60,10 +71,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         if (v==mRegisterbtn){
+            if(!password.getText().toString().trim().equals(cnfpassword.getText().toString().trim()))
+                Toast.makeText(getApplicationContext(), "Password and Confirm Password do not match", Toast.LENGTH_LONG).show();
+            else
             UserRegister();
-        }else if (v== mLoginPageBack){
-            startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
-        }
+        }//else if (v== mLoginPageBack){
+           // startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+        //}
     }
 
     private void UserRegister() {
@@ -95,7 +109,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     mDialog.dismiss();
                     //OnAuth(task.getResult().getUser());
                   //  mAuth.signOut();
-                    Intent intent = new Intent(RegisterActivity.this, MapsActivity.class);
+                    Intent intent = new Intent(RegisterActivity.this, CertiActivity.class);
                     startActivity(intent);
 
                 }else{

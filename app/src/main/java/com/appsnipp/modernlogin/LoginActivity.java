@@ -49,12 +49,12 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
-        LogInButton = (Button) findViewById(R.id.cirLoginButton);
+        LogInButton = (Button) findViewById(R.id.button3);
 
-        RegisterButton = (TextView) findViewById(R.id.cirRegisterButton);
+        RegisterButton = (TextView) findViewById(R.id.textView6);
 
-        Email = (EditText) findViewById(R.id.editTextEmail);
-        Password = (EditText) findViewById(R.id.editTextPassword);
+        Email = (EditText) findViewById(R.id.ed1);
+        Password = (EditText) findViewById(R.id.editText);
         dialog = new ProgressDialog(this);
 
         if(mUser!=null){

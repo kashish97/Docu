@@ -16,6 +16,11 @@
     <color name="whiteTextColor">#fff</color>
     <color name="primaryTextColor">#11CFC5</color>
 
+    <color name="d">#258B80</color>
+
+    <color name="col1">#DFB34B</color>
+
+    <!--colors for light mode-->
 
     <!--colors for crop activity-->
     <!--<color name="ucrop_color_toolbar">@color/teal_500</color>-->
